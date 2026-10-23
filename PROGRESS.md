@@ -16,9 +16,9 @@ Done
 - ✅ Day 5: Pagination
 - ✅ Day 6: Job detail page with notFound and metadata
 - ✅ Day 7: Saved jobs with a client island and localStorage
+- ✅ Day 8: Loading, error and not-found states
 
 Next
-- [ ] Day 8: Loading, error and not-found states
 - [ ] Day 9: SEO, sitemap, robots and icon
 - [ ] Day 10: Accessibility and Lighthouse
 - [ ] Day 11: Deploy on Vercel and write the README
