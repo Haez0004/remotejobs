@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import sanitizeHtml from "sanitize-html";
 import { getJobById } from "@/lib/jobs";
+import SaveButton from "@/components/SaveButton";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -77,14 +78,17 @@ export default async function JobPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: description }}
       />
 
-      <a
-        href={job.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-8 inline-block rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-900"
-      >
-        Apply on Remotive
-      </a>
+      <div className="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={job.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-900"
+        >
+          Apply on Remotive
+        </a>
+        <SaveButton id={job.id} />
+      </div>
     </article>
   );
 }

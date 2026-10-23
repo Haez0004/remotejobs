@@ -9,15 +9,15 @@ Data source: Remotive API (link back and credit are required)
 ## Daily plan
 
 Done
-- [x] Day 1: Set up the project, Cache Components, tracker
-- [x] Day 2: Data layer with use cache and a fallback copy
-- [x] Day 3: Layout, navbar, footer credit, jobs list
-- [x] Day 4: Search and filter stored in the URL
-- [x] Day 5: Pagination
-- [x] Day 6: Job detail page with notFound and metadata
+- ✅ Day 1: Set up the project, Cache Components, tracker
+- ✅ Day 2: Data layer with use cache and a fallback copy
+- ✅ Day 3: Layout, navbar, footer credit, jobs list
+- ✅ Day 4: Search and filter stored in the URL
+- ✅ Day 5: Pagination
+- ✅ Day 6: Job detail page with notFound and metadata
+- ✅ Day 7: Saved jobs with a client island and localStorage
 
 Next
-- [ ] Day 7: Saved jobs with a client island and localStorage
 - [ ] Day 8: Loading, error and not-found states
 - [ ] Day 9: SEO, sitemap, robots and icon
 - [ ] Day 10: Accessibility and Lighthouse

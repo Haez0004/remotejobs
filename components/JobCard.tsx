@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Job } from '@/lib/jobs'
+import SaveButton from './SaveButton'
 
 export default function JobCard({ job }: { job: Job }) {
   return (
@@ -19,9 +20,12 @@ export default function JobCard({ job }: { job: Job }) {
           </span>
         ))}
       </div>
-      <a href={job.url} target='_blank' rel='noopener noreferrer' className='inline-block mt-3 text-xs text-slate-400 hover:underline'>
-        Source: Remotive
-      </a>
+      <div className='mt-3 flex items-center justify-between gap-3'>
+        <a href={job.url} target='_blank' rel='noopener noreferrer' className='text-xs text-slate-400 hover:underline'>
+          Source: Remotive
+        </a>
+        <SaveButton id={job.id} />
+      </div>
     </article>
   )
 }
