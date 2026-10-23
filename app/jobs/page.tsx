@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import JobCard from '@/components/JobCard'
+import JobsSkeleton from '@/components/JobsSkeleton'
 import { getJobs } from '@/lib/jobs'
 
 export const metadata: Metadata = { title: 'Remote jobs' }
@@ -80,7 +81,7 @@ export default function JobsPage({ searchParams }: Props) {
   return (
     <section className='w-full max-w-5xl mx-auto px-4 py-8'>
       <h1 className='text-2xl font-bold mb-6'>Remote jobs</h1>
-      <Suspense fallback={<p className='text-slate-400'>Loading jobs…</p>}>
+      <Suspense fallback={<JobsSkeleton />}>
         <JobsView searchParams={searchParams} />
       </Suspense>
     </section>
