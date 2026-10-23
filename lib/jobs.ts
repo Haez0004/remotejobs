@@ -29,3 +29,8 @@ export async function getJobs(): Promise<Job[]> {
     return (sample as unknown as { jobs: Job[] }).jobs
   }
 }
+
+export async function getJobById(id: string): Promise<Job | undefined> {
+  const jobs = await getJobs()
+  return jobs.find((job) => job.id === Number(id))
+}
