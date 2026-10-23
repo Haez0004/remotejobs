@@ -12,9 +12,9 @@ Done
 - [ ] Day 1: Set up the project, Cache Components, tracker
 - [ ] Day 2: Data layer with use cache and a fallback copy
 - [ ] Day 3: Layout, navbar, footer credit, jobs list
+- [ ] Day 4: Search and filter stored in the URL
 
 Next
-- [ ] Day 4: Search and filter stored in the URL
 - [ ] Day 5: Pagination
 - [ ] Day 6: Job detail page with notFound and metadata
 - [ ] Day 7: Saved jobs with a client island and localStorage

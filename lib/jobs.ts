@@ -15,7 +15,7 @@ export interface Job {
   description: string
 }
 
-const API = 'https://remotive.com/api/remote-jobs?category=software-dev'
+const API = 'https://remotive.com/api/remote-jobs'
 
 export async function getJobs(): Promise<Job[]> {
   'use cache'
