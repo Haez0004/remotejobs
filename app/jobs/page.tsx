@@ -1,12 +1,14 @@
 import { Suspense } from 'react'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import JobCard from '@/components/JobCard'
 import { getJobs } from '@/lib/jobs'
 
 export const metadata: Metadata = { title: 'Remote jobs' }
 
-type Props = { searchParams: Promise<{ q?: string; type?: string; category?: string }> }
+type Props = { searchParams: Promise<{ q?: string; type?: string; category?: string; page?: string }> }
 
+const PAGE_SIZE = 10
 const TYPES = [
   ['', 'All types'],
   ['full_time', 'Full time'],
@@ -16,11 +18,11 @@ const TYPES = [
 ]
 
 async function JobsView({ searchParams }: Props) {
-  const { q = '', type = '', category = '' } = await searchParams
+  const { q = '', type = '', category = '', page = '1' } = await searchParams
   const jobs = await getJobs()
   const categories = Array.from(new Set(jobs.map((j) => j.category))).sort()
   const needle = q.trim().toLowerCase()
-  const shown = jobs.filter((j) => {
+  const filtered = jobs.filter((j) => {
     const text = `${j.title} ${j.company_name} ${j.category} ${j.tags.join(' ')}`.toLowerCase()
     return (
       text.includes(needle) &&
@@ -28,6 +30,17 @@ async function JobsView({ searchParams }: Props) {
       (!category || j.category === category)
     )
   })
+const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+const current = Math.min(Math.max(1, Number(page) || 1), pages)
+const shown = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE)
+const link = (p: number) => {
+  const s = new URLSearchParams()
+  if (q) s.set('q', q)
+  if (category) s.set('category', category)
+  if (type) s.set('type', type)
+  s.set('page', String(p))
+  return `/jobs?${s}`
+}
 
   return (
     <>
@@ -46,12 +59,19 @@ async function JobsView({ searchParams }: Props) {
         </select>
         <button className='bg-cyan-400 text-slate-900 font-bold px-5 py-3 rounded'>Search</button>
       </form>
-      <p className='text-sm text-slate-400 mb-4'>{shown.length} jobs</p>
+      <p className='text-sm text-slate-400 mb-4'>{filtered.length} jobs</p>
       <div className='grid gap-4 md:grid-cols-2'>
         {shown.map((j) => (
           <JobCard key={j.id} job={j} />
         ))}
       </div>
+{pages > 1 && (
+  <nav className='flex items-center justify-between mt-8 text-sm' aria-label='Pagination'>
+    {current > 1 ? <Link href={link(current - 1)} className='border border-slate-600 px-4 py-2 rounded'>Previous</Link> : <span />}
+    <span className='text-slate-400'>Page {current} of {pages}</span>
+    {current < pages ? <Link href={link(current + 1)} className='border border-slate-600 px-4 py-2 rounded'>Next</Link> : <span />}
+  </nav>
+)}
     </>
   )
 }
