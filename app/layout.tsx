@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://remotejobs-liard.vercel.app'
 const description =
   'Browse remote software jobs, search by keyword and save the ones you like. Jobs from Remotive.'
 
