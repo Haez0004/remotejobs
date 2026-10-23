@@ -2,7 +2,7 @@
 
 Goal: a remote jobs board in Next.js 16, TypeScript and Tailwind.
 
-Live site: add after deploy
+Live site: https://remotejobs-liard.vercel.app
 Repo: https://github.com/Haez0004/remotejobs
 Data source: Remotive API (link back and credit are required)
 
