@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RemoteJobs
 
-## Getting Started
+A remote jobs board built with Next.js 16, TypeScript and Tailwind CSS. Search and filter remote software jobs, open a job for the full details, and save the ones you like.
 
-First, run the development server:
+**Live site:** https://remotejobs-liard.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Search by title, company, category or tag
+- Filter by category and job type
+- Search and filters stored in the URL, so results can be shared and bookmarked
+- Pagination (10 jobs per page)
+- Job detail page with tags, salary when available, and a sanitized description
+- Save jobs with a client component and localStorage, plus a Saved page
+- Loading skeletons, an error page with retry, and a styled 404
+- SEO: page titles, Open Graph metadata, sitemap.xml and robots.txt
+- Lighthouse (mobile): Performance 99, Accessibility 100, Best Practices 100, SEO 100
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 16 (App Router, server components, caching)
+- TypeScript
+- Tailwind CSS
+- sanitize-html, to clean job descriptions before rendering
 
-## Learn More
+## Data source
 
-To learn more about Next.js, take a look at the following resources:
+Jobs come from the [Remotive](https://remotive.com) API. Listings are delayed by 24 hours, and every job links back to its page on Remotive. The data is cached and refreshed about every 6 hours to respect Remotive's request limits. If the API is unavailable, the app falls back to a saved sample in `data/jobs.sample.json`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Run it locally
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    git clone https://github.com/Haez0004/remotejobs.git
+    cd remotejobs
+    npm install
+    npm run dev
 
-## Deploy on Vercel
+Then open http://localhost:3000.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The repo includes an `.npmrc` with `legacy-peer-deps=true`, because `eslint-config-next` is on an older version than Next.js 16 and npm would otherwise stop on a peer dependency conflict.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment variable
+
+`NEXT_PUBLIC_SITE_URL` is optional locally and defaults to `http://localhost:3000`. On Vercel, set it to the live URL with no trailing slash. It is used for the sitemap, robots.txt and social preview metadata.
+
+## Project structure
+
+    app/            pages, layouts, sitemap, robots, loading and error states
+    components/     Navbar, Footer, JobCard, SaveButton, SavedList, JobsSkeleton
+    lib/jobs.ts     data layer: fetch, cache and fallback
+    lib/saved.ts    saved jobs stored in localStorage
+    data/           sample jobs used as a fallback
+
+## Credit
+
+Job data provided by [Remotive](https://remotive.com). Built by Haez.

@@ -21,7 +21,7 @@ Done
 - ✅ Day 10: Accessibility and Lighthouse
 
 Next
-- [ ] Day 11: Deploy on Vercel and write the README
+- ✅ Day 11: Deploy on Vercel and write the README
 - [ ] Day 12: Add to portfolio, CV and LinkedIn
 
 ## Problems and fixes
