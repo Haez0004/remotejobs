@@ -22,7 +22,7 @@ Done
 - ✅ Day 11: Deploy on Vercel and write the README
 
 Next
-- [ ] Day 12: Add to portfolio, CV and LinkedIn
+- ✅ Day 12: Add to portfolio, CV and LinkedIn
 
 ## Problems and fixes
 | Problem | Fix |
