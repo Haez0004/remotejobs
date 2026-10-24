@@ -20,8 +20,6 @@ Done
 - ✅ Day 9: SEO, sitemap, robots and icon
 - ✅ Day 10: Accessibility and Lighthouse
 - ✅ Day 11: Deploy on Vercel and write the README
-
-Next
 - ✅ Day 12: Add to portfolio, CV and LinkedIn
 
 ## Problems and fixes

@@ -15,7 +15,7 @@ A remote jobs board built with Next.js 16, TypeScript and Tailwind CSS. Search a
 - Loading skeletons, an error page with retry, and a styled 404
 - Installable PWA with a service worker and an offline fallback page
 - SEO: page titles, Open Graph metadata, sitemap.xml and robots.txt
-- Lighthouse (mobile): Performance 99, Accessibility 100, Best Practices 100, SEO 100
+- Lighthouse (mobile): Performance 100, Accessibility 100, Best Practices 100, SEO 100
 
 ## Tech stack
 
